@@ -17,5 +17,7 @@ $users = [
 </head>
 <body>
     <h2><?= $title ?></h2>    
+
+    <!-- Tableタグを使って $users の一覧を作ってください -->
 </body>
 </html>
