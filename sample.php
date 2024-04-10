@@ -10,6 +10,6 @@ $title = "Top Page";
     <title>Document</title>
 </head>
 <body>
-    <h2><?= $title ?></h3>    
+    <h2><?= $title ?></h2>    
 </body>
 </html>
