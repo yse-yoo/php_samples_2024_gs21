@@ -1,3 +1,7 @@
+<?php
+$title = "Top Page";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Top Page</h2>    
+    <h2></h2>    
 </body>
 </html>
