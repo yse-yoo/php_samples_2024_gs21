@@ -1,8 +1,9 @@
 <?php
 if (isset($_POST)) {
+    // var_dump($_POST);
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $hash_password = hash("sha256", $password);
+    $hash_password = password_hash($password, PASSWORD_DEFAULT);
 }
 ?>
 
