@@ -5,4 +5,6 @@ SELECT * FROM users LIMIT 10 OFFSET 10;
 SELECT * FROM users WHERE email LIKE '%.com%';
 
 # emailアドレスに「.com」を含むユーザの件数（けんすう）をだしてください
-SELECT COUNT(id) FROM users WHERE email LIKE '%.com%';
+SELECT COUNT(id) AS user_count
+    FROM users 
+    WHERE email LIKE '%.com%';
