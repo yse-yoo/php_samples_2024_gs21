@@ -8,7 +8,6 @@ $db_name = DB_DATABASE;
 $db_host = DB_HOST;
 $db_port = DB_PORT;
 
-
 // DB information(DB接続情報)
 // mysql:dbname=my_shop;host=port=3306;character=utf8;
 $dsn = "{$db_connection}:dbname={$db_name};host={$db_host};port={$db_port};charset=utf8;";
@@ -25,6 +24,19 @@ try {
     echo "接続失敗: " . $e->getMessage();
     exit;
 }
+
+// スーパーグローバル変数
+// $_GET
+// $_POST
+// $_REQUEST
+
+// $_SERVER
+// $_FILES
+// $_SESSION
+if (isset($_GET['q'])) {
+    $keyword = $_GET['q'];
+}
+
 
 //SQLクエリ
 $sql = "SELECT * FROM users;";
@@ -65,10 +77,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h3>User List</h3>
         <div>
             <form action="" method="get">
-                <input class="form-control" type="text" name="q">
+                <input class="form-control" type="text" name="q" value="<?= @$keyword ?>">
                 <button class="btn btn-primary">Search</button>
             </form>
         </div>
+        <h4>検索キーワード</h4>
+        <p><?= @$keyword ?></p>
         <table class="table">
             <thead>
                 <tr>
