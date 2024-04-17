@@ -30,11 +30,22 @@ if (!empty($_POST)) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Emailで検索するSQL
+    $sql = "SELECT * FROM users WHERE email = '{$email}'";
+
     // SQLを実行すると、PDO Statement Object がかえってくる
     $stmt = $pdo->query($sql);
     // PHPのオブジェクトにコンバート
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    // var_dump($users);
+
+    if ($user) {
+        //パスワード検証（けんしょう） verify
+        if (password_verify($password, $user['password'])) {
+            $message =  "パスワードが一致しました。";
+        } else {
+            $message = "パスワードが一致しませんでした。";
+        }
+    }
 }
 
 ?>
@@ -70,6 +81,8 @@ if (!empty($_POST)) {
             <p><?= @$email ?></p>
             <h3>Password</h3>
             <p><?= @$password ?></p>
+            <h3>Result</h3>
+            <p><?= @$message ?></p>
         </div>
     </div>
 </body>
