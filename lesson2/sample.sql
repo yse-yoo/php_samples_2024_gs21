@@ -8,3 +8,8 @@ SELECT * FROM users WHERE email LIKE '%.com%';
 SELECT COUNT(id) AS user_count
     FROM users 
     WHERE email LIKE '%.com%';
+
+# id が 2 5 8 11 のユーザ一覧をだす
+SELECT * FROM users WHERE id = 2 OR id = 5 OR id = 8 OR id = 11;
+
+SELECT * FROM users WHERE id in (2, 5, 8, 11);
