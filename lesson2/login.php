@@ -29,13 +29,14 @@ try {
 if (!empty($_POST)) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    // SQLを実行すると、PDO Statement Object がかえってくる
+    $stmt = $pdo->query($sql);
+    // PHPのオブジェクトにコンバート
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // var_dump($users);
 }
 
-// SQLを実行すると、PDO Statement Object がかえってくる
-// $stmt = $pdo->query($sql);
-// PHPのオブジェクトにコンバート
-// $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($users);
 ?>
 
 <!DOCTYPE html>
