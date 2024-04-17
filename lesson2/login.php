@@ -26,7 +26,7 @@ try {
 }
 
 // POSTリクエストパラメータを取得（しゅとく）
-if (isset($_POST)) {
+if (!empty($_POST)) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 }
