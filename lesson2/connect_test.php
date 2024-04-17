@@ -63,6 +63,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p><?= $stmt->queryString ?></p>
 
         <h3>User List</h3>
+        <div>
+            <form action="" method="get">
+                <input class="form-control" type="text" name="q">
+                <button class="btn btn-primary">Search</button>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>
