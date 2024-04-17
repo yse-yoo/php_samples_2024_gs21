@@ -27,12 +27,14 @@ try {
 
 // GETリクエストパラメータを取得（しゅとく）
 if (isset($_GET['q'])) {
+    //キーワードがある場合
     $keyword = $_GET['q'];
+    $sql = "SELECT * FROM users WHERE email LIKE '%{$keyword}%';";
+} else {
+    //キーワードがない場合
+    $sql = "SELECT * FROM users;";
 }
 
-
-//SQLクエリ
-$sql = "SELECT * FROM users;";
 // SQLを実行すると、PDO Statement Object がかえってくる
 $stmt = $pdo->query($sql);
 // PHPのオブジェクトにコンバート
@@ -72,6 +74,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <form action="" method="get">
                 <input class="form-control" type="text" name="q" value="<?= @$keyword ?>">
                 <button class="btn btn-primary">Search</button>
+                <a class="btn btn-outline-primary" href="<?= basename($_SERVER['PHP_SELF']) ?>">Reset</a>
             </form>
         </div>
         <h4>検索キーワード</h4>
