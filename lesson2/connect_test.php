@@ -8,7 +8,23 @@ $db_name = DB_DATABASE;
 $db_host = DB_HOST;
 $db_port = DB_PORT;
 
+
+// DB information(DB接続情報)
+// mysql:dbname=my_shop;host=port=3306;character=utf8;
+$dsn = "{$db_connection}:dbname={$db_name};host={$db_host};port={$db_port};charset=utf8;";
+$db_user = DB_USERNAME;
+$db_password = DB_PASSWORD;
+
 // DB Connect（データベース接続）
+try {
+    // DB接続
+    $pdo = new PDO($dsn, $db_user, $db_password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+} catch (PDOException $e) {
+    echo "接続失敗: " . $e->getMessage();
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,5 +44,7 @@ $db_port = DB_PORT;
         <dt>Port</dt>
         <dd><?= $db_port ?></dd>
     </dl>
+    <h2>DSN</h2>
+    <p><?= $dsn ?></p>
 </body>
 </html>
