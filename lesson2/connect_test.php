@@ -25,14 +25,7 @@ try {
     exit;
 }
 
-// スーパーグローバル変数
-// $_GET
-// $_POST
-// $_REQUEST
-
-// $_SERVER
-// $_FILES
-// $_SESSION
+// GETリクエストパラメータを取得（しゅとく）
 if (isset($_GET['q'])) {
     $keyword = $_GET['q'];
 }
@@ -83,6 +76,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <h4>検索キーワード</h4>
         <p><?= @$keyword ?></p>
+
         <table class="table">
             <thead>
                 <tr>
