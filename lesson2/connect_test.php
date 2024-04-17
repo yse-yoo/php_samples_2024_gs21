@@ -1,4 +1,4 @@
-<?php 
+<?php
 // 「env.php」を読み込む
 require_once 'env.php';
 
@@ -37,25 +37,51 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
-    <h1>MySQL Test</h1>
-    <dl>
-        <dt>Connection</dt>
-        <dd><?= $db_connection ?></dd>
-        <dt>Host</dt>
-        <dd><?= $db_host ?></dd>
-        <dt>Port</dt>
-        <dd><?= $db_port ?></dd>
-    </dl>
-    <h2>DSN</h2>
-    <p><?= $dsn ?></p>
 
-    <h3>SQL</h3>
-    <p><?= $stmt->queryString ?></p>
+<body>
+    <div class="container">
+        <h1>MySQL Test</h1>
+        <dl>
+            <dt>Connection</dt>
+            <dd><?= $db_connection ?></dd>
+            <dt>Host</dt>
+            <dd><?= $db_host ?></dd>
+            <dt>Port</dt>
+            <dd><?= $db_port ?></dd>
+        </dl>
+        <h2>DSN</h2>
+        <p><?= $dsn ?></p>
+
+        <h3>SQL</h3>
+        <p><?= $stmt->queryString ?></p>
+
+        <h3>User List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user) : ?>
+                    <tr>
+                        <td><?= $user['id']; ?></td>
+                        <td><?= $user['name']; ?></td>
+                        <td><?= $user['email']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
