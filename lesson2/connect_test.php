@@ -25,6 +25,14 @@ try {
     echo "接続失敗: " . $e->getMessage();
     exit;
 }
+
+//SQLクエリ
+$sql = "SELECT * FROM users;";
+// SQLを実行すると、PDO Statement Object がかえってくる
+$stmt = $pdo->query($sql);
+// PHPのオブジェクトにコンバート
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($users);
 ?>
 
 <!DOCTYPE html>
@@ -46,5 +54,8 @@ try {
     </dl>
     <h2>DSN</h2>
     <p><?= $dsn ?></p>
+
+    <h3>SQL</h3>
+    <p><?= $stmt->queryString ?></p>
 </body>
 </html>
