@@ -37,13 +37,12 @@ if (!empty($_POST)) {
     $stmt = $pdo->query($sql);
     // PHPのオブジェクトにコンバート
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $message = "ログイン失敗";
 
     if ($user) {
         //パスワード検証（けんしょう） verify
         if (password_verify($password, $user['password'])) {
-            $message =  "パスワードが一致しました。";
-        } else {
-            $message = "パスワードが一致しませんでした。";
+            $message =  "ログイン成功";
         }
     }
 }
