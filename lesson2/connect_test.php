@@ -38,7 +38,14 @@ if (isset($_GET['q'])) {
 // SQLを実行すると、PDO Statement Object がかえってくる
 $stmt = $pdo->query($sql);
 // PHPのオブジェクトにコンバート
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//すべてのレコードを取得
+// $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 1件ずつレコードを取得
+while ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $users[] = $user;
+}
+
 // var_dump($users);
 ?>
 
